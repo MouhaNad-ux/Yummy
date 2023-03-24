@@ -3,16 +3,16 @@ body{
     color                   : white;
     font-family             : Arial, Helvetica, sans-serif;
 }
-/* The side navigation menu */
-.sidenav {
-    /* display: none; */
-    display: flex;
-    flex-direction: column;
 
-    justify-content: space-between;
+.sidenav {
+
+    display                 : flex;
+    flex-direction          : column;
+
+    justify-content         : space-between;
 
     text-align              : left;
-    min-height                  : 100vh;
+    min-height              : 100vh;
     width                   : 0;
     margin-left             : 0;
     position                : fixed;
@@ -22,43 +22,37 @@ body{
     background-color        : #0d0d0d;
     overflow-x              : hidden;
     padding-top             : 25px;
-    z-index: 99;
-    /* transition              :all 0.5s; */
+    z-index                 : 99;
 }
 
-  /* The navigation menu links */
   #list{
     /* display: none; */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 99;
-
-    /* justify-content: space-between; */
+    display                 : flex;
+    flex-direction          : column;
+    overflow                : hidden;
+    z-index                 : 99;
   }
 #list a {
     padding                 : 4px 8px 8px 32px;
     text-decoration         : none;
     font-size               : 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family             : 'Roboto', sans-serif;
     color                   : #f1f1f1;
     display                 : block;
-    width: 100%;
-    /* transition              : all 1s; */
-    position: relative;
-    top: 300px;
-    z-index: 99;
+    width                   : 100%;
 
-    /* margin-bottom           : 1.5rem; */
+    position                : relative;
+    top                     : 300px;
+    z-index                 : 99;
 }
 #sidenavFooter{
-    display: block;
-    width: 250px;
-    position: relative;
-    bottom: 0;
-    padding-bottom: 18px;
-    padding-left: 18px;
-    z-index: 99;
+    display                 : block;
+    width                   : 250px;
+    position                : relative;
+    bottom                  : 0;
+    padding-bottom          : 18px;
+    padding-left            : 18px;
+    z-index                 : 99;
 
 }
 
@@ -70,42 +64,25 @@ body{
     font-size               : 36px;
     margin-left             : 50px;
     cursor                  : pointer;
-    z-index: 99;
+    z-index                 : 99;
 
 }
-
-/* #main {
-    transition              : margin-left .5s;
-    padding                 : 20px;
-    transition              :all 0.5s;
-
-} */
-
-/* #main #openBtn{
-
-} */
 #content{
-    padding: 1.2rem 0.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    padding                 : 1.2rem 0.3rem;
+    display                 : flex;
+    flex-direction          : column;
+    justify-content         : space-between;
+    align-items             : center;
     font-size               : 1rem;
     cursor                  : pointer;
     float                   : left;
-    width: 65px;
-    background-color: #ffffff;
-    color: #0d0d0d;
-    position: fixed;
-    z-index: 99;
-
-    left: 0;
+    width                   : 65px;
+    background-color        : #ffffff;
+    color                   : #0d0d0d;
+    position                : fixed;
+    z-index                 : 99;
+    left                    : 0;
     height                  : 100vh;
-    /* transition              :all 5s; */
-
-    /* top                     : 20000rem; */
-    /* left                    : 0; */
-
 }
 @media screen and (max-height: 450px) {
     .sidenav {padding-top   : 15px;}
@@ -118,68 +95,49 @@ header{
     color                   : white;
 }
 
-
 ::placeholder {
     color                   : #999 !important;
 }
 .searchInput.form-control , .searchInput.form-control:focus{
-    background-color: #0d0d0d;
-    color: white;
+    background-color        : #0d0d0d;
+    color                   : white;
 }
 figure{
     /* overflow: hidden; */
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
+    position                : relative;
+    z-index                 : 1;
+    cursor                  : pointer;
 }
 figure img {
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
+    overflow                : hidden;
+    position                : relative;
+    z-index                 : 1;
 
 }
 #mealsRow .col-md-3{
-    cursor: pointer;
-
+    cursor                  : pointer;
 }
 #figCap{
-    width: 100%;
-    height: 100%;
-    background-color: #f9f6f6ca;
-    top: 100%;
-    transition: .5s;
-    z-index: 1;
-
+    width                   : 100%;
+    height                  : 100%;
+    background-color        : #f9f6f6ca;
+    top                     : 100%;
+    transition              : .5s;
+    z-index                 : 1;
 }
 figure:hover #figCap{
-    top: 0;
+    top                     : 0;
 }
-
-
-
-
-d-flex flex-column justify-content-center align-items-center vh-100
 #contact{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin-top: auto;
+    display                 : flex;
+    justify-content         : center;
+    align-items             : center;
+    min-height              : 100vh;
+    margin-top              : auto;
 }
-
 #search, #contact{
-    display: none;
+    display                 : none;
 }
-
-#submitBtn{
-    
-}
-
-
-
-
-
-
 
 /* Loading */
 .loading {
