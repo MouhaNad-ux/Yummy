@@ -1,0 +1,151 @@
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!--                                           Author       : Mouhanad Ahmed                                                           -->
+<!--                                           Languages    : HTML + CSS + Bootstrap + JS + JQuery                                     -->
+<!--                                           Date         : 07/3/2023                                                                -->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!DOCTYPE html>
+<html lang                                                  = "en-us">
+<head>
+    <meta charset                                           = "UTF-8">
+    <meta name                                              = "viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel                                               = "stylesheet" href="/CSS/all.min.css">
+    <link href                                              = "css/bootstrap.min.css" rel="stylesheet" >
+    <link rel                                               = "stylesheet" href="css/style.css">
+    <title>Yummy</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" >
+</head>
+<body >
+    <!-- //SECTION - Navigation -->
+    <nav class="">
+                <div id                                     = "mySidenav" class="sidenav ">
+                    <!-- <a class                                = "closebtn">x</a> -->
+                    <div id="list" class="pt-0">
+                        <a class="search" href="#search">Search</a>
+                        <a class="categories" href                                 = "#categories">Categories</a>
+                        <a class="area" href                                 = "#area">Area</a>
+                        <a class="ingredients" href                                 = "#ingredients">Ingredients</a>
+                        <a class="contact" href                                 = "#Contact">Contact Us</a>
+                        
+                    </div>
+                    <div id="sidenavFooter">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-solid fa-globe mb-2"></i>
+                        <p>Copyright Â© 2019 All Rights
+                            Reserved.</p>
+                    </div>
+
+                </div>
+                <div id="content">
+                
+                        <figure >
+                            <img id="logo" src="./images/logo.png" alt="logo" class="w-75  m-auto">
+                        </figure>
+                        <span id                                = "openBtn" class="fw-bolder fs-1">≣</span>
+                        <span class="d-flex flex-column justify-content-between ">
+                            <i class="fa-solid fa-globe mb-2"></i>
+                        <i class="fa-solid fa-share-nodes"></i>
+                        </span>
+                        
+    
+                    
+
+            </div>  
+
+    </nav>
+    <!-- //!SECTION - Navigation -->
+
+          <!-- //SECTION - Search -->
+          <section id="search">
+            <div  class                                  = "container py-5">
+                <div class="row">
+                  <div class="col">
+                    <input onkeyup="searchByName(this.value)" id="searchByNameInput" type="text" class="searchInput form-control" placeholder="Search by Name" >
+                  </div>
+                  <div class="col">
+                    <input onkeyup="searchByFirstLetter(this.value)" type="text" class="searchInput form-control" placeholder="Search by First letter" >
+                  </div>
+                </div></div>
+          </section>
+    
+          <!-- //!SECTION - Search -->
+
+        <!-- //SECTION - Header  -->
+        <header id                                        = "home" class="   pt-5">
+            
+            <div class                                  = "container">
+                <div id                                 = "mealsRow" class=" row py-5 g-4">
+                    <div class="col-md-3">
+                    <figure class                     = "position-relative overflow-hidden rounded-2 cursor-pointer">
+                        <img src                        = "./images/58oia61564916529.jpg" class="w-100" alt="...">
+                        <figcaption id="figCap" class=" position-absolute d-flex align-items-center text-black p-2"><h3>Kumpir</h3></figcaption>
+                    </figure>
+                </div>
+                  </div>
+            </div>
+
+
+      </header>
+      <!-- //!SECTION Header  -->
+
+          <!-- //SECTION - Contact -->
+          <section id="contact" >
+            <div  class                                  = "container w-75">
+                <div class="row   w-75 m-auto">
+                  <div class="col-lg py-2">
+                    <input  id="name" type="text" class="form-control" placeholder="Enter your Name" >
+                    <div id="invalidName" class="alert alert-danger mt-2  d-none"> invalid Name</div>
+                  </div>
+                  <div class="col-lg py-2">
+                    <input id="email" type="email" class="form-control" placeholder="Enter your Email" >
+                    <div id="invalidEmail" class="alert alert-danger mt-2 d-none ">Email not valid *exemple@yyy.zzz</div>
+                  </div>
+                </div>
+
+                <div class="row  w-75 m-auto">
+                    <div class="col-lg py-2">
+                      <input id="phone"  type="tel" class="form-control" placeholder="Enter your Phone" >
+                    <div id="invalidPhone" class="alert alert-danger mt-2 d-none ">Enter valid Phone Number</div>
+
+                    </div>
+                    <div class="col-lg py-2">
+                      <input id="age" type="number" class="form-control" placeholder="Enter your Age" >
+                    <div id="invalidAge" class="alert alert-danger mt-2  d-none">Enter valid Age</div>
+
+                    </div>
+                  </div>
+
+                  <div class="row  w-75 m-auto">
+                    <div class="col-lg py-2">
+                      <input  id="password" type="password" class="form-control" placeholder="Enter your password" >
+                    <div id="invalidPassword" class="alert alert-danger mt-2  d-none">Enter valid password *Minimum eight characters, at least one letter and one number:*</div>
+
+                    </div>
+                    <div class="col-lg py-2">
+                      <input id="repassword" type="password" class="form-control" placeholder="Repassword" >
+                    <div id="invalidrepassword" class="alert alert-danger mt-2  d-none">Enter valid repassword</div>
+
+                    </div>
+                  </div>
+                  <div class="row  ">
+                    <div class="col-1 m-auto py-2">
+                        <button disabled id="submitBtn" class=" btn btn-outline-danger" >Submit</button>
+                    </div>
+                    
+                  </div>
+                </div>
+          </section>
+    
+          <!-- //!SECTION - Contact -->
+
+          <!-- //SECTION - Loader -->
+          <!-- <div class                                        = "loading" id="loading">
+            <span class                                     = "loader"></span>
+         </div> -->
+          <!-- //!SECTION - Loader -->
+<script src                                                 = "./js/jquery-3.2.1.min.js"></script>
+<script src                                                 = "./js/bootstrap.bundle.min.js"></script>
+<script src                                                 = "./js/index.js"></script>
+</body>
+</html>
