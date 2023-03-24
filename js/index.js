@@ -196,12 +196,12 @@ async function displayCategories(term){
 // list the available areas from the API and prepare them for the UI
 async function getArea() {
     mealsRow.innerHTML                              = ""
-    $(".inner-loading-screen").fadeIn(300)
+    $("#loading").fadeIn(500)
     let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
     respone                                         = await respone.json()
     console.log(respone.meals);
     displayArea(respone.meals)
-    $(".inner-loading-screen").fadeOut(300)
+    $("#loading").fadeOut(500)
 }
 
 //  show the available areas fetched from the API on the UI 
@@ -233,12 +233,12 @@ async function getAreaMeals(term){
 // list the available ingredients from the API and prepare them for the UI
 async function getIngredients() {
     mealsRow.innerHTML                              = ""
-    $(".inner-loading-screen").fadeIn(300)
+    $("#loading").fadeIn(500)
     let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
     respone                                         = await respone.json()
     console.log(respone.meals);
     displayIngredients(respone.meals)
-    $(".inner-loading-screen").fadeOut(300)
+    $("#loading").fadeOut(500)
 }
 //  show the available ingredients fetched from the API on the UI 
 function displayIngredients(arr) {
@@ -273,11 +273,11 @@ async function getIngredientMeals(term){
 // Lookup full meal details by id
 async function getMealFullDetails(id){
     mealsRow.innerHTML                              = ""
-    $(".inner-loading-screen").fadeIn(300)
+    $("#loading").fadeIn(500)
     let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     respone                                         = await respone.json()
     displayMealDetails(respone.meals[0])
-    $(".inner-loading-screen").fadeOut(300)
+    $("#loading").fadeOut(500)
 }
 // UI meals display function
 function displayMealDetails(arr) {
