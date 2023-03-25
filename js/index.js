@@ -13,27 +13,23 @@ const invalidAge                                    = document.querySelector("#i
 const invalidPhone                                  = document.querySelector("#invalidPhone");
 const invalidPassword                               = document.querySelector("#invalidPassword");
 const invalidRepassword                             = document.querySelector("#invalidRepassword");
-let count                                           = 0;
-
+let count                                           = 0; // a variable to count valid inputs for the contact us
 
 // Event Listeners
 // Side navigation button
 $("#openBtn").click(function(){
     if ($("#mySidenav").width() =="250"){
-        $("#openBtn").text("≣")
-
+        $("#openBtn").text("≣");
         $("#content").animate({marginLeft:"0px"},"slow");
         $("#mySidenav").animate({width:"0px"});
         $("#list a").animate({top:"300px"},500);
 
     }else{
-        $("#openBtn").text("X")
+        $("#openBtn").text("X");
         $("#sidenavFooter").show();
         $("#mySidenav").animate({width:"250px"},"slow");
         for (let i = 0; i < 5; i++) {
-            $("#list a").eq(i).animate({
-                top                                 : 0
-            }, (i + 5) * 100)
+            $("#list a").eq(i).animate({top: 0}, (i + 5) * 100);
         }
         $("#content").animate({marginLeft:"250px"},"slow");
     }
@@ -51,7 +47,6 @@ $(".categories").click(function(){
     $("#search").hide();
     $("#contact").hide();
     $("#home").show();
-
     getCategories();
 })
 // Side Navigation area tab
@@ -69,7 +64,6 @@ $(".ingredients").click(function(){
 })
 // logo to home screen
 $("#logo").click(function(){
-    // $("#openBtn").click();
     searchByName([]);
     $("#contact").hide();
 
@@ -102,12 +96,11 @@ $(password).blur(function(){
 $(repassword).blur(function(){
     validateRepassword();
 })
-// Functions 
 
+// Functions 
 // UI meals display function
 function displayMeals(arr) {
     let cartoona                                    = "";
-
     for (let i = 0; i < arr.length; i++) {
         cartoona                                    += `
         <div class                                  = "col-md-3">
@@ -117,24 +110,20 @@ function displayMeals(arr) {
         </figure>
     </div>
         `
-    }
-
-    mealsRow.innerHTML                              = cartoona
+    };
+    mealsRow.innerHTML                              = cartoona;
 }
 
 // Search by meal name 
 async function searchByName(term) {
-    // $("#openBtn").click();
     mealsRow.innerHTML                              = "";
-    $("#loading").fadeIn(500)
-    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
-    response                                        = await response.json()
+    $("#loading").fadeIn(500);
+    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`);
+    response                                        = await response.json();
     $("#home").show();
-    
-    response.meals ? displayMeals(response.meals)   : displayMeals([])
-    $("#loading").fadeOut(500)
+    response.meals ? displayMeals(response.meals)   : displayMeals([]);
+    $("#loading").fadeOut(500);
     $("#contact").hide();
-
 }
 
 // empty function call to display random meals on website first load
@@ -143,24 +132,24 @@ searchByName([]);
 // Search by meal name 
 async function searchByFirstLetter(term) {
     mealsRow.innerHTML                              = ``;
-    $("#loading").fadeIn(500)
-    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`)
-    response                                        = await response.json()
+    $("#loading").fadeIn(500);
+    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`);
+    response                                        = await response.json();
     console.log(displayMeals(response.meals) );
     $("#home").show();
-    response.meals ? displayMeals(response.meals)   : displayMeals([])
-    $("#loading").fadeOut(500)
+    response.meals ? displayMeals(response.meals)   : displayMeals([]);
+    $("#loading").fadeOut(500);
 }
 
 // get the available categories from the API and prepare them for the UI
 async function getCategories(){
     mealsRow.innerHTML                              = ``;
-    $("#loading").fadeIn(500)
-    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
-    response                                        = await response.json()
+    $("#loading").fadeIn(500);
+    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
+    response                                        = await response.json();
     $("#home").show();
     displaCategoryMeals(response.categories);
-    $("#loading").fadeOut(500)
+    $("#loading").fadeOut(500);
 }
 
 // show the available categories fetched from the API on the UI
@@ -178,30 +167,29 @@ function displaCategoryMeals(arr) {
         </figure>
     </div>
         `
-    }
-    mealsRow.innerHTML                              = cartoona
+    };
+    mealsRow.innerHTML                              = cartoona;
 }
 
 //  get the clicked category meals from API and send them to the UI 
 async function displayCategories(term){
     mealsRow.innerHTML                              = ``;
-    $("#loading").fadeIn(500)
-    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${term}`)
-    response                                        = await response.json()
+    $("#loading").fadeIn(500);
+    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${term}`);
+    response                                        = await response.json();
     $("#home").show();
-    response.meals ? displayMeals(response.meals)   : displayMeals([])
-    $("#loading").fadeOut(500)
+    response.meals ? displayMeals(response.meals)   : displayMeals([]);
+    $("#loading").fadeOut(500);
 }
 
 // list the available areas from the API and prepare them for the UI
 async function getArea() {
-    mealsRow.innerHTML                              = ""
-    $("#loading").fadeIn(500)
-    let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
-    respone                                         = await respone.json()
-    console.log(respone.meals);
-    displayArea(respone.meals)
-    $("#loading").fadeOut(500)
+    mealsRow.innerHTML                              = "";
+    $("#loading").fadeIn(500);
+    let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`);
+    respone                                         = await respone.json();
+    displayArea(respone.meals);
+    $("#loading").fadeOut(500);
 }
 
 //  show the available areas fetched from the API on the UI 
@@ -216,36 +204,34 @@ function displayArea(arr) {
                 </div>
         </div>
         `
-    }
-    mealsRow.innerHTML                              = cartona
+    };
+    mealsRow.innerHTML                              = cartona;
 }
 //  get the clicked category meals from API and send them to the UI 
 async function getAreaMeals(term){
     mealsRow.innerHTML                              = ``;
-    $("#loading").fadeIn(500)
-    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${term}`)
-    response                                        = await response.json()
+    $("#loading").fadeIn(500);
+    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${term}`);
+    response                                        = await response.json();
     $("#home").show();
-    response.meals ? displayMeals(response.meals)   : displayMeals([])
-    $("#loading").fadeOut(500)
+    response.meals ? displayMeals(response.meals)   : displayMeals([]);
+    $("#loading").fadeOut(500);
 }
 
 // list the available ingredients from the API and prepare them for the UI
 async function getIngredients() {
-    mealsRow.innerHTML                              = ""
-    $("#loading").fadeIn(500)
-    let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
-    respone                                         = await respone.json()
+    mealsRow.innerHTML                              = "";
+    $("#loading").fadeIn(500);
+    let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`);
+    respone                                         = await respone.json();
     console.log(respone.meals);
-    displayIngredients(respone.meals)
-    $("#loading").fadeOut(500)
+    displayIngredients(respone.meals);
+    $("#loading").fadeOut(500);
 }
 //  show the available ingredients fetched from the API on the UI 
 function displayIngredients(arr) {
     let cartona                                     = "";
-    
     for (let i = 0; i < arr.length; i++) {
-
         cartona                                     += `
         <div class                                  = "col-md-3 ">
         <figure onclick                             = "getIngredientMeals('${arr[i].strIngredient}')" class="position-relative overflow-hidden rounded-2 ">
@@ -257,27 +243,27 @@ function displayIngredients(arr) {
         </figure>
     </div>
         `
-    }
-    mealsRow.innerHTML                              = cartona
+    };
+    mealsRow.innerHTML                              = cartona;
 }
 // Filter by main ingredient
 async function getIngredientMeals(term){
     mealsRow.innerHTML                              = ``;
-    $("#loading").fadeIn(500)
-    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${term}`)
-    response                                        = await response.json()
+    $("#loading").fadeIn(500);
+    let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${term}`);
+    response                                        = await response.json();
     $("#home").show();
-    response.meals ? displayMeals(response.meals)   : displayMeals([])
-    $("#loading").fadeOut(500)
+    response.meals ? displayMeals(response.meals)   : displayMeals([]);
+    $("#loading").fadeOut(500);
 }
 // Lookup full meal details by id
 async function getMealFullDetails(id){
-    mealsRow.innerHTML                              = ""
-    $("#loading").fadeIn(500)
-    let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-    respone                                         = await respone.json()
-    displayMealDetails(respone.meals[0])
-    $("#loading").fadeOut(500)
+    mealsRow.innerHTML                              = "";
+    $("#loading").fadeIn(500);
+    let respone                                     = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    respone                                         = await respone.json();
+    displayMealDetails(respone.meals[0]);
+    $("#loading").fadeOut(500);
 }
 // UI meals display function
 function displayMealDetails(arr) {
@@ -288,16 +274,15 @@ function displayMealDetails(arr) {
             recipe                                  += `
             <li class                               = "alert alert-info m-2 p-1">${arr[`strMeasure${i}`]} ${arr[`strIngredient${i}`]}</li>
             `
-        }
-    }
-    let tags                                        = arr.strTags?.split(",")
-    if (!tags) tags = []
-
-    let tagsStr                                     = ''
+        };
+    };
+    let tags                                        = arr.strTags?.split(",");
+    if (!tags) tags = [];
+    let tagsStr                                     = '';
     for (let tag in tags) {
         tagsStr                                     += `
         <li class                                   = "alert alert-danger m-2 p-1">${tags[tag]}</li>`
-    }
+    };
     mealsRow.innerHTML                              = `
         <div class                                  = "col-md-4">
         <figure class                               = " position-relative overflow-hidden rounded-2 ">
@@ -342,7 +327,7 @@ function validateName(){
         showHiddenItem(invalidUserName);
         count--;
         return false;
-    }
+    };
     
 }
 
@@ -356,7 +341,7 @@ function validateEmail(){
         showHiddenItem(invalidEmail);
         count--;
         return false;
-    }
+    };
 }
 
 function validatePhone(){
@@ -369,7 +354,7 @@ function validatePhone(){
         showHiddenItem(invalidPhone);
         count--;
         return false;
-    }
+    };
 }
 
 function validateAge(){
@@ -382,11 +367,11 @@ function validateAge(){
         showHiddenItem(invalidAge);
         count--;
         return false;
-    }
+    };
 }
 
 function validatePassword(){
-    var regex                                       = /^.*\d.*[a-z][0-9a-zA-Z]{8,}$/gm;
+    var regex                                       = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/gm;
     if (regex.test(password.value)==true) {
         hideItem(invalidPassword);
         count++;
@@ -395,28 +380,24 @@ function validatePassword(){
         showHiddenItem(invalidPassword);
         count--;
         return false;
-    }
+    };
 }
 
 function validateRepassword(){
-    var regex                                       = /^.*\d.*[a-z][0-9a-zA-Z]{8,}$/gm;
+    var regex                                       = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/gm;
     if (regex.test(repassword.value)==true && repassword.value == password.value) {
         hideItem(invalidPassword);
         count++;
         validateInputs();
-
         return true;
         
-
     } else {
         showHiddenItem(invalidPassword);
         return false;
-    }
+    };
 }
-
 function  validateInputs(){
     if (count>5) {
         document.querySelector("#submitBtn").removeAttribute("disabled")
-        
-    }
+    };
 }

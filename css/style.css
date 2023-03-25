@@ -3,14 +3,11 @@ body{
     color                   : white;
     font-family             : Arial, Helvetica, sans-serif;
 }
-
+/* Side Navigation Styling */
 .sidenav {
-
     display                 : flex;
     flex-direction          : column;
-
     justify-content         : space-between;
-
     text-align              : left;
     min-height              : 100vh;
     width                   : 0;
@@ -24,14 +21,12 @@ body{
     padding-top             : 25px;
     z-index                 : 99;
 }
-
-  #list{
-    /* display: none; */
+#list{
     display                 : flex;
     flex-direction          : column;
     overflow                : hidden;
     z-index                 : 99;
-  }
+}
 #list a {
     padding                 : 4px 8px 8px 32px;
     text-decoration         : none;
@@ -40,7 +35,6 @@ body{
     color                   : #f1f1f1;
     display                 : block;
     width                   : 100%;
-
     position                : relative;
     top                     : 300px;
     z-index                 : 99;
@@ -53,10 +47,7 @@ body{
     padding-bottom          : 18px;
     padding-left            : 18px;
     z-index                 : 99;
-
 }
-
-
 .sidenav .closebtn {
     position                : absolute;
     top                     : 0;
@@ -65,7 +56,6 @@ body{
     margin-left             : 50px;
     cursor                  : pointer;
     z-index                 : 99;
-
 }
 #content{
     padding                 : 1.2rem 0.3rem;
@@ -88,13 +78,10 @@ body{
     .sidenav {padding-top   : 15px;}
     .sidenav a {font-size   : 18px;}
 }
-
 /* Header section */
 header{
-
     color                   : white;
 }
-
 ::placeholder {
     color                   : #999 !important;
 }
@@ -103,7 +90,6 @@ header{
     color                   : white;
 }
 figure{
-    /* overflow: hidden; */
     position                : relative;
     z-index                 : 1;
     cursor                  : pointer;
@@ -112,7 +98,6 @@ figure img {
     overflow                : hidden;
     position                : relative;
     z-index                 : 1;
-
 }
 #mealsRow .col-md-3{
     cursor                  : pointer;
@@ -128,6 +113,8 @@ figure img {
 figure:hover #figCap{
     top                     : 0;
 }
+/* Header section */
+/* Inputs styling */
 #contact{
     display                 : flex;
     justify-content         : center;
@@ -138,7 +125,7 @@ figure:hover #figCap{
 #search, #contact{
     display                 : none;
 }
-
+/* Inputs styling */
 /* Loading */
 .loading {
     position                : fixed;
@@ -149,8 +136,8 @@ figure:hover #figCap{
     display                 : flex;
     justify-content         : center;
     align-items             : center;
- }
- .loader {
+}
+.loader {
     width                   : 100px;
     height                  : 100px;
     border-radius           : 50%;
@@ -162,8 +149,8 @@ figure:hover #figCap{
     position                : relative;
     left                    : 0;
     top                     : 0;
- }
- .loader::after {
+}
+.loader::after {
     content                 : "";
     box-sizing              : border-box;
     position                : absolute;
@@ -177,13 +164,13 @@ figure:hover #figCap{
     border-left             : 4px solid yellow;
     border-bottom           : 4px solid transparent;
     animation               : rotation 0.5s linear infinite reverse;
- }
- @keyframes rotation {
+}
+@keyframes rotation {
     0% {
-       transform            : rotate(0deg);
+    transform               : rotate(0deg);
     }
     100% {
-       transform            : rotate(360deg);
+    transform               : rotate(360deg);
     }
- }
+}
 /* Loading */
