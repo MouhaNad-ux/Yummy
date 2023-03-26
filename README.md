@@ -19,7 +19,7 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
 - [Footer](#footer)
 
 
-# demo-preview
+# Demo preview
 https://mouhanad-ux.github.io/Yummy/
 
 
