@@ -15,8 +15,8 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
 - [Usage](#usage)
 - [Development](#development)
     - [Adding new features or fixing bugs](#adding-new-features-or-fixing-bugs)
-- [License](#license)
-- [Footer](#footer)
+//- [License](#license)
+//- [Footer](#footer)
 
 
 # Demo preview
