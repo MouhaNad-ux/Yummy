@@ -102,7 +102,7 @@ figure img {
 #mealsRow .col-md-3{
     cursor                  : pointer;
 }
-#figCap{
+.figCap{
     width                   : 100%;
     height                  : 100%;
     background-color        : #f9f6f6ca;
@@ -110,7 +110,7 @@ figure img {
     transition              : .5s;
     z-index                 : 1;
 }
-figure:hover #figCap{
+figure:hover .figCap{
     top                     : 0;
 }
 /* Header section */

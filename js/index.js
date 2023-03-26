@@ -1,6 +1,7 @@
 "use strict";
 const mealsRow                                      = document.querySelector("#mealsRow");
 const searchByNameInput                             = document.querySelector("#searchByNameInput");
+const searchByFirstLetterInput                      = document.querySelector("#searchByFirstLetterInput");
 const userName                                      = document.querySelector("#name");
 const email                                         = document.querySelector("#email");
 const age                                           = document.querySelector("#age");
@@ -40,6 +41,9 @@ $(".search").click(function(){
     $("#openBtn").click();
     $("#contact").hide();
     $("#search").show();
+    // resseting the search inputs
+    searchByNameInput.value="";
+    searchByFirstLetterInput.value="";
 })
 // Side Navigation categories tab
 $(".categories").click(function(){
@@ -77,7 +81,31 @@ $(".contact").click(function(){
     "align-items"                                   : "center",
     "min-height"                                    : "100vh",
     "margin-top"                                    : "auto",});
+    // resseting the form
+    userName.value="";
+    email.value="";
+    age.value="";
+    phone.value="";
+    password.value="";
+    repassword.value="";
+    count=0;
+    hideItem(invalidUserName);
+    hideItem(invalidEmail);
+    hideItem(invalidPhone);
+    hideItem(invalidAge);
+    hideItem(invalidPassword);
+    hideItem(invalidRepassword);
 })
+searchByNameInput.addEventListener("keyup",function(e){
+    // console.log(e.target.value);
+    searchByName(e.target.value);
+    // e.target.value="";
+})
+searchByFirstLetterInput.addEventListener("keyup",async function(e){
+await searchByFirstLetter(e.target.value);
+// e.target.value="";
+})
+
 $(userName).blur(function(){
     validateName();
 })
@@ -105,8 +133,8 @@ function displayMeals(arr) {
         cartoona                                    += `
         <div class                                  = "col-md-3">
         <figure class                               = " position-relative overflow-hidden rounded-2 ">
-            <img src                                = "${arr[i].strMealThumb}" class=" w-100" alt="...">
-            <figcaption onclick                     = "getMealFullDetails(${arr[i].idMeal})" id="figCap" class=" position-absolute d-flex align-items-center text-black p-2"><h3>${arr[i].strMeal}</h3></figcaption>
+            <img src                                = "${arr[i].strMealThumb}" class=" w-100" alt="${arr[i].strMeal}">
+            <figcaption onclick                     = "getMealFullDetails(${arr[i].idMeal})" id="${arr[i].idMeal}" class="figCap position-absolute d-flex align-items-center text-black p-2"><h3>${arr[i].strMeal}</h3></figcaption>
         </figure>
     </div>
         `
@@ -135,7 +163,7 @@ async function searchByFirstLetter(term) {
     $("#loading").fadeIn(500);
     let response                                    = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`);
     response                                        = await response.json();
-    console.log(displayMeals(response.meals) );
+    // console.log(displayMeals(response.meals) );
     $("#home").show();
     response.meals ? displayMeals(response.meals)   : displayMeals([]);
     $("#loading").fadeOut(500);
@@ -159,8 +187,8 @@ function displaCategoryMeals(arr) {
         cartoona                                    += `
         <div class                                  = "col-md-3 ">
         <figure onclick                             = "displayCategories('${arr[i].strCategory}')" class                     = "position-relative overflow-hidden rounded-2 ">
-            <img src                                = "${arr[i].strCategoryThumb}" class="w-100 " alt="...">
-            <figcaption id                          = "figCap" class=" position-absolute d-flex align-items-center flex-column  text-black p-2">
+            <img src                                = "${arr[i].strCategoryThumb}" class="w-100 " alt="${arr[i].strCategory}">
+            <figcaption id                          = "${arr[i].idCategory}" class="figCap position-absolute d-flex align-items-center flex-column  text-black p-2">
             <h3 onclick                             = "displayCategories('${arr[i].strCategory}')" class="fw-bold ">${arr[i].strCategory}</h3>
             <p onclick                              = "displayCategories('${arr[i].strCategory}')" class="text-center ">${(arr[i].strCategoryDescription)}</p>
             </figcaption>
@@ -235,8 +263,8 @@ function displayIngredients(arr) {
         cartona                                     += `
         <div class                                  = "col-md-3 ">
         <figure onclick                             = "getIngredientMeals('${arr[i].strIngredient}')" class="position-relative overflow-hidden rounded-2 ">
-            <img src                                = "https://www.themealdb.com/images/ingredients/${arr[i].strIngredient}.png" class="w-100 " alt="...">
-            <figcaption id                          = "figCap" class=" position-absolute d-flex align-items-center flex-column  text-black p-2">
+            <img src                                = "https://www.themealdb.com/images/ingredients/${arr[i].strIngredient}.png" class="w-100 " alt="${arr[i].strIngredient}">
+            <figcaption id                          = "${arr[i].idIngredient}" class="figCap position-absolute d-flex align-items-center flex-column  text-black p-2">
             <h3 onclick                             = "getIngredientMeals('${arr[i].strIngredient}')" class="fw-bold ">${arr[i].strIngredient}</h3>
             <p>${arr[i].strDescription!=null?arr[i].strDescription:""}</p>           
             </figcaption>
@@ -286,7 +314,7 @@ function displayMealDetails(arr) {
     mealsRow.innerHTML                              = `
         <div class                                  = "col-md-4">
         <figure class                               = " position-relative overflow-hidden rounded-2 ">
-            <img src                                = "${arr.strMealThumb}" class=" w-100" alt="...">
+            <img src                                = "${arr.strMealThumb}" class=" w-100" alt="${arr.strMeal}">
             <figcaption  class                      = "  d-flex align-items-center p-2"><h3>${arr.strMeal}</h3></figcaption>
         </figure>
     </div>
@@ -318,7 +346,7 @@ function hideItem(item){
 }
 
 function validateName(){
-       var regex                                    = /^[a-zA-Z 0-9]{3,}$/gm;
+  var regex                                    = /^[a-zA-Z 0-9]{3,}$/gm;
     if (regex.test(userName.value)==true) {
         hideItem(invalidUserName);
         count++;
@@ -386,13 +414,13 @@ function validatePassword(){
 function validateRepassword(){
     var regex                                       = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/gm;
     if (regex.test(repassword.value)==true && repassword.value == password.value) {
-        hideItem(invalidPassword);
+        hideItem(invalidRepassword);
         count++;
         validateInputs();
         return true;
         
     } else {
-        showHiddenItem(invalidPassword);
+        showHiddenItem(invalidRepassword);
         return false;
     };
 }
