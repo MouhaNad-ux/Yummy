@@ -1,4 +1,5 @@
 "use strict";
+(function(){
 const mealsRow                                      = document.querySelector("#mealsRow");
 const searchByNameInput                             = document.querySelector("#searchByNameInput");
 const searchByFirstLetterInput                      = document.querySelector("#searchByFirstLetterInput");
@@ -124,7 +125,27 @@ $(password).blur(function(){
 $(repassword).blur(function(){
     validateRepassword();
 })
-
+$(document).on("click", ".mealsFig", function(e) { 
+    getMealFullDetails(e.target.id); 
+});
+$(document).on("click", ".categoryFigure", function(e) { 
+    displayCategories(e.target.parentElement.id);
+    // console.log(e.target.id);
+    // console.log(e.target);
+    // console.log(e.target.parentElement.id);
+});
+$(document).on("click", ".areaMeals", function(e) { 
+    getAreaMeals(e.target.id);
+    console.log(e.target.id);
+    console.log(e.target);
+});
+    // categoryFigure
+    // onclick                             = "getIngredientMeals('${arr[i].strIngredient}')"
+$(document).on("click", ".ingredientMeals", function(e) { 
+    getIngredientMeals(e.target.id);
+    console.log(e.target.id);
+    console.log(e.target);
+});
 // Functions 
 // UI meals display function
 function displayMeals(arr) {
@@ -134,7 +155,7 @@ function displayMeals(arr) {
         <div class                                  = "col-md-3">
         <figure class                               = " position-relative overflow-hidden rounded-2 ">
             <img src                                = "${arr[i].strMealThumb}" class=" w-100" alt="${arr[i].strMeal}">
-            <figcaption onclick                     = "getMealFullDetails(${arr[i].idMeal})" id="${arr[i].idMeal}" class="figCap position-absolute d-flex align-items-center text-black p-2"><h3>${arr[i].strMeal}</h3></figcaption>
+            <figcaption id                          ="${arr[i].idMeal}" class="mealsFig figCap position-absolute d-flex align-items-center text-black p-2"><h3>${arr[i].strMeal}</h3></figcaption>
         </figure>
     </div>
         `
@@ -181,16 +202,17 @@ async function getCategories(){
 }
 
 // show the available categories fetched from the API on the UI
+//TODO - how to get all the childern on click get the parent id and pass it to onclick action
 function displaCategoryMeals(arr) {
     let cartoona                                    = "";
     for (let i = 0; i < arr.length; i++) {
         cartoona                                    += `
         <div class                                  = "col-md-3 ">
-        <figure onclick                             = "displayCategories('${arr[i].strCategory}')" class                     = "position-relative overflow-hidden rounded-2 ">
+        <figure  id                                 ="${arr[i].strCategory}" class                     = "categoryFigure position-relative overflow-hidden rounded-2 ">
             <img src                                = "${arr[i].strCategoryThumb}" class="w-100 " alt="${arr[i].strCategory}">
-            <figcaption id                          = "${arr[i].idCategory}" class="figCap position-absolute d-flex align-items-center flex-column  text-black p-2">
-            <h3 onclick                             = "displayCategories('${arr[i].strCategory}')" class="fw-bold ">${arr[i].strCategory}</h3>
-            <p onclick                              = "displayCategories('${arr[i].strCategory}')" class="text-center ">${(arr[i].strCategoryDescription)}</p>
+            <figcaption id                          = "${arr[i].strCategory}" class="figCap position-absolute d-flex align-items-center flex-column  text-black p-2">
+            <h3  class="categoryFigure fw-bold ">${arr[i].strCategory}</h3>
+            <p class="text-center categoryFigure">${(arr[i].strCategoryDescription)}</p>
             </figcaption>
         </figure>
     </div>
@@ -225,9 +247,9 @@ function displayArea(arr) {
     let cartona                                     = "";
     for (let i = 0; i < arr.length; i++) {
         cartona                                     += `
-        <div class                                  = "col-md-3">
-                <div onclick                        = "getAreaMeals('${arr[i].strArea}')" class="rounded-2 text-center ">
-                        <i class                    = "fa-solid fa-house-laptop fa-4x"></i>
+        <div   class                                  = "areaMeals col-md-3">
+                <div  class="  rounded-2 text-center ">
+                        <i id="${arr[i].strArea}" class                    = "fa-solid fa-house-laptop fa-4x"></i>
                         <h3>${arr[i].strArea}</h3>
                 </div>
         </div>
@@ -262,11 +284,11 @@ function displayIngredients(arr) {
     for (let i = 0; i < arr.length; i++) {
         cartona                                     += `
         <div class                                  = "col-md-3 ">
-        <figure onclick                             = "getIngredientMeals('${arr[i].strIngredient}')" class="position-relative overflow-hidden rounded-2 ">
+        <figure id="${arr[i].strIngredient}"  class="ingredientMeals position-relative overflow-hidden rounded-2 ">
             <img src                                = "https://www.themealdb.com/images/ingredients/${arr[i].strIngredient}.png" class="w-100 " alt="${arr[i].strIngredient}">
             <figcaption id                          = "${arr[i].idIngredient}" class="figCap position-absolute d-flex align-items-center flex-column  text-black p-2">
-            <h3 onclick                             = "getIngredientMeals('${arr[i].strIngredient}')" class="fw-bold ">${arr[i].strIngredient}</h3>
-            <p>${arr[i].strDescription!=null?arr[i].strDescription:""}</p>           
+            <h3  class="ingredientMeals fw-bold ">${arr[i].strIngredient}</h3>
+            <p class="ingredientMeals">${arr[i].strDescription!=null?arr[i].strDescription:""}</p>           
             </figcaption>
         </figure>
     </div>
@@ -428,4 +450,4 @@ function  validateInputs(){
     if (count>5) {
         document.querySelector("#submitBtn").removeAttribute("disabled")
     };
-}
+}})()
