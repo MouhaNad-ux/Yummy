@@ -20,7 +20,7 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
 
 
 # Demo preview
-https://mouhanad-ux.github.io/Yummy/
+https://mouhanadahmed.github.io/Yummy/
 
 
 # Usage
